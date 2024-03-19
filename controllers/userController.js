@@ -68,9 +68,23 @@ const deleteUserData = async (req, res) => {
   }
 };
 
+const profilePic = async (req, res) => {
+  try {
+    const userPic = req.file;
+    res.json({
+      profile : userPic
+    })
+  }catch(err){
+    res.status(500).json({
+      message : err.message
+    })
+  }
+}
+
 module.exports = {
   userDataCreate,
   getUserData,
   editUserData,
   deleteUserData,
+  profilePic,
 };
